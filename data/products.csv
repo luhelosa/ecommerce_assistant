@@ -1,0 +1,6 @@
+product_id,title,category,price,tags,description,image_url
+1,Audífonos Pro,Electrónica,120.0,popular,Audífonos bluetooth con gran batería,https://picsum.photos/seed/1/300/300
+2,Smartwatch Eco,Electrónica,95.0,oferta,Smartwatch resistente al agua,https://picsum.photos/seed/2/300/300
+3,Zapatillas Running,Deportes,80.0,tendencia,Zapatillas ligeras para correr,https://picsum.photos/seed/3/300/300
+4,Libro de Python,Libros,30.0,popular,Aprende Python desde cero,https://picsum.photos/seed/4/300/300
+5,Cepillo Facial,Belleza,25.0,oferta,Cuidado de la piel diario,https://picsum.photos/seed/5/300/300

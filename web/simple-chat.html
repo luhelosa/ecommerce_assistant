@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat E-commerce (simple)</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; }
+        #log { border: 1px solid #ddd; padding: 1rem; height: 360px; overflow: auto; white-space: pre-wrap; }
+        #log .me { color: #0b5; }
+        #log .bot { color: #06c; }
+    </style>
+</head>
+<body>
+    <h1>Chat E-commerce (simple)</h1>
+    <div id="log" style="margin-top:1rem;">
+    </div>
+    <input id="msg" placeholder="Escribe aquí..." style="width:80%"/>
+    <button id="send">Enviar</button>
+
+    <script>
+        const BOT_URL = "http://localhost:8000/chat"; // nuestro mini-bot
+        const input = document.getElementById("msg");
+        const log = document.getElementById("log");
+        const btn = document.getElementById("send");
+
+        function add(line, who) {
+            const p = document.createElement("div");
+            p.className = who;
+            p.textContent = (who === "me" ? "Tú: " : "Bot: ") + line;
+            log.appendChild(p);
+            log.scrollHeight;
+        }
+
+        async function send() {
+            const text = input.value.trim();
+            if (!text) return;
+            add(text, "me"); input.value = "";
+            try {
+                const r = await fetch(BOT_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: text, user_id: 1 })
+                });
+                const data = await r.json();
+                add(data.reply || "(sin respuesta)", "bot");
+            } catch (e) {
+                add("Error conectando al bot: " + e, "bot");
+            }
+        }
+
+        btn.onclick = send;
+        input.addEventListener("keydown", (e) => { if(e.key=="enter") send(); });
+    </script>
+</body>
+</html>

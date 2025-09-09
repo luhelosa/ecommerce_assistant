@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ecommerce-assistant"
+version = "0.1.0"
+description = "Asistente de e-commerce con FastAPI y recomendador"
+authors = [{ name = "Tu Nombre", email = "tu.email@ejemplo.com" }]
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "scipy",
+    "numpy",
+    "pandas#,
+    "joblib"
+]
